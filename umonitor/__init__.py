@@ -1,2 +1,2 @@
 from .uMonitor import uMonitor as uMonitor
-__version__ = '0.1.2'
+__version__ = '0.1.5'

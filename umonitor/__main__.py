@@ -1,15 +1,6 @@
 from .uMonitor import *
 from .uMonitor import uMonitor as uMonitor
 
-def sig_handler(signal, frame):
-    print("signal: ", signal)
-    sys.exit(0)
-
-def catch_signals(signals: set):
-    catchable = signals - { signal.SIGKILL, signal.SIGSTOP }
-    for sig in catchable:
-        signal.signal(sig, sig_handler)
-
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
@@ -36,5 +27,4 @@ def main():
         p.run()
 
 if __name__ == "__main__":
-    catch_signals({signal.SIGINT})
     main()

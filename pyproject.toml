@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "uMonitor"
-version = "0.1.2"
+version = "0.1.5"
 description = "A package to run and monitor background services"
 authors = ["Ruslan Sergeev <mybox.sergeev@gmail.com>"]
 keywords = ["microservices", "monitor", "scheduler"]
+readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/RuslanSergeev/uMonitor.git"
 repository = "https://github.com/RuslanSergeev/uMonitor.git"

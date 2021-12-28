@@ -8,6 +8,7 @@ import signal
 import copy
 import re
 
+
 class uMonitor:
     """ Runs and monitors child processes according given a json config."""
 
@@ -17,6 +18,7 @@ class uMonitor:
             config: str
             Path to json config for the current uMonitor process.
         '''
+        self.catch_signals({signal.SIGINT})
         self.processes = dict()
         with open(config) as cfg_file:
             try:
@@ -26,6 +28,17 @@ class uMonitor:
             except Exception as e:
                 print("Unable to parse config: ", e.args)
                 exit(1)
+
+    @staticmethod
+    def sig_handler(signal, frame):
+        print("signal: ", signal)
+        sys.exit(0)
+    
+    @staticmethod
+    def catch_signals(signals: set):
+        catchable = signals - { signal.SIGKILL, signal.SIGSTOP }
+        for sig in catchable:
+            signal.signal(sig, uMonitor.sig_handler)
 
     def __del__(self):
         '''Correctly kill child processes when used

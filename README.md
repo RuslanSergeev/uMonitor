@@ -33,7 +33,8 @@ More complex: it also provides environment variables and venv-like
 behavior for the specified programs. See the `config_example.json`
 for more details.
 
-```json{
+```json
+{
     "comment": "Treat this as virtual environment, but not only for python.",
     "interpreters" : {
         "python3" : "/venv_some/bin/python3",
@@ -81,4 +82,31 @@ for more details.
         }
     ]
 }
+```
+## Installation:
+
+- Installation using pip:
+```shell
+python3 -m pip install umonitor
+```
+
+- Installation using poetry:
+```shell
+poetry add umonitor
+```
+
+
+## Usage example:
+
+- As a callable module:
+```shell
+python3 -m umonitor config.json
+```
+
+- In a script:
+```python
+import umonitor
+
+monitor = umonitor.uMonitor("config.json")
+monitor.run()
 ```
